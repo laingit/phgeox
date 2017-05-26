@@ -17,6 +17,7 @@ defmodule Phgeox.Web.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/utenti", UtenteController
   end
 
   # Other scopes may use custom stacks.

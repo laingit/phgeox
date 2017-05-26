@@ -1,0 +1,26 @@
+<h2>Listing Utenti</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for utente <- @utenti do %>
+    <tr>
+      <td><%= utente.name %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: utente_path(@conn, :show, utente), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: utente_path(@conn, :edit, utente), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: utente_path(@conn, :delete, utente), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Utente", to: utente_path(@conn, :new) %></span>
