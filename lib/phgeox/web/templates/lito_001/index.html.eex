@@ -1,0 +1,14 @@
+<h4>Legenda Carta Litologica 2017 versione: 001</h2>
+
+<table class="table">
+  <tbody>
+  <%= for lito_001 <- @lito_001 do %>
+      <tr>
+        <td><%= tassello(lito_001) %></td>
+        <td><%= lito_001.liv_2_desc %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+

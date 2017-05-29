@@ -1,0 +1,40 @@
+<h2>Legenda Carta Litologica 2017 versione: 001</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Tassello</th>
+      <th>0</th>
+      <th>0 desc</th>
+      <th>1</th>
+      <th>1 desc</th>
+      <th>2</th>
+      <th>2 desc</th>
+      
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for lito_001 <- @lito_001 do %>
+    <tr>
+      <td><%= tassello(lito_001) %></td>
+      <td><%= lito_001.liv_0 %></td>
+      <td><%= lito_001.liv_0_desc %></td>
+      <td><%= lito_001.liv_1 %></td>
+      <td><%= lito_001.liv_1_desc %></td>
+      <td><%= lito_001.liv_2 %></td>
+      <td><%= lito_001.liv_2_desc %></td>
+      
+     
+
+      <td class="text-right">
+        <span><%= link "Show", to: lito_001_path(@conn, :show, lito_001), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: lito_001_path(@conn, :edit, lito_001), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: lito_001_path(@conn, :delete, lito_001), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Lito 001", to: lito_001_path(@conn, :new) %></span>

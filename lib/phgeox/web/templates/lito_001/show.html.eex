@@ -1,0 +1,56 @@
+<h2>Show Lito 001</h2>
+
+<ul>
+  <li>
+    <%= tassello(@lito_001) %>
+  </li>
+
+  <li>
+    <strong>Liv 0:</strong>
+    <%= @lito_001.liv_0 %>
+  </li>
+
+  <li>
+    <strong>Liv 0 desc:</strong>
+    <%= @lito_001.liv_0_desc %>
+  </li>
+
+  <li>
+    <strong>Liv 1:</strong>
+    <%= @lito_001.liv_1 %>
+  </li>
+
+  <li>
+    <strong>Liv 1 desc:</strong>
+    <%= @lito_001.liv_1_desc %>
+  </li>
+
+  <li>
+    <strong>Liv 2:</strong>
+    <%= @lito_001.liv_2 %>
+  </li>
+
+  <li>
+    <strong>Liv 2 desc:</strong>
+    <%= @lito_001.liv_2_desc %>
+  </li>
+
+  <li>
+    <strong>Red:</strong>
+    <%= @lito_001.red %>
+  </li>
+
+  <li>
+    <strong>Green:</strong>
+    <%= @lito_001.green %>
+  </li>
+
+  <li>
+    <strong>Blue:</strong>
+    <%= @lito_001.blue %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: lito_001_path(@conn, :edit, @lito_001) %></span>
+<span><%= link "Back", to: lito_001_path(@conn, :index) %></span>

@@ -1,0 +1,6 @@
+<h2>Edit Lito 001</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: lito_001_path(@conn, :update, @lito_001) %>
+
+<span><%= link "Back", to: lito_001_path(@conn, :index) %></span>

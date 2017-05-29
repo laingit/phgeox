@@ -18,6 +18,7 @@ defmodule Phgeox.Web.Router do
 
     get "/", PageController, :index
     resources "/utenti", UtenteController
+    resources "/lito_001", Lito_001Controller
   end
 
   # Other scopes may use custom stacks.
