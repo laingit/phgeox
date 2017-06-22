@@ -54,5 +54,5 @@ config :phgeox, Phgeox.Repo,
   username: "postgres",
   password: "postgres",
   database: "phgeox_dev",
-  hostname: "192.168.10.149",
+  hostname: "192.168.18.51",
   pool_size: 10
