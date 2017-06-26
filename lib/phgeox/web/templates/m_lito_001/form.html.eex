@@ -1,0 +1,53 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :liv_0, class: "control-label" %>
+    <%= text_input f, :liv_0, class: "form-control" %>
+    <%= error_tag f, :liv_0 %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :liv_0_desc, class: "control-label" %>
+    <%= text_input f, :liv_0_desc, class: "form-control" %>
+    <%= error_tag f, :liv_0_desc %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :liv_1, class: "control-label" %>
+    <%= text_input f, :liv_1, class: "form-control" %>
+    <%= error_tag f, :liv_1 %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :liv_1_desc, class: "control-label" %>
+    <%= text_input f, :liv_1_desc, class: "form-control" %>
+    <%= error_tag f, :liv_1_desc %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :red, class: "control-label" %>
+    <%= number_input f, :red, class: "form-control" %>
+    <%= error_tag f, :red %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :green, class: "control-label" %>
+    <%= number_input f, :green, class: "form-control" %>
+    <%= error_tag f, :green %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :blue, class: "control-label" %>
+    <%= number_input f, :blue, class: "form-control" %>
+    <%= error_tag f, :blue %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

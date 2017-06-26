@@ -107,4 +107,106 @@ defmodule Phgeox.Legende do
     |> cast(attrs, [:liv_0, :liv_0_desc, :liv_1, :liv_1_desc, :liv_2, :liv_2_desc, :red, :green, :blue])
     |> validate_required([:liv_0, :liv_0_desc, :liv_1, :liv_1_desc, :liv_2, :liv_2_desc, :red, :green, :blue])
   end
+
+  alias Phgeox.Legende.MLito_001
+
+  @doc """
+  Returns the list of mlito_001.
+
+  ## Examples
+
+      iex> list_mlito_001()
+      [%MLito_001{}, ...]
+
+  """
+  def list_mlito_001 do
+    Repo.all(MLito_001)
+  end
+
+  @doc """
+  Gets a single m_lito_001.
+
+  Raises `Ecto.NoResultsError` if the M lito 001 does not exist.
+
+  ## Examples
+
+      iex> get_m_lito_001!(123)
+      %MLito_001{}
+
+      iex> get_m_lito_001!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_m_lito_001!(id), do: Repo.get!(MLito_001, id)
+
+  @doc """
+  Creates a m_lito_001.
+
+  ## Examples
+
+      iex> create_m_lito_001(%{field: value})
+      {:ok, %MLito_001{}}
+
+      iex> create_m_lito_001(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_m_lito_001(attrs \\ %{}) do
+    %MLito_001{}
+    |> m_lito_001_changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a m_lito_001.
+
+  ## Examples
+
+      iex> update_m_lito_001(m_lito_001, %{field: new_value})
+      {:ok, %MLito_001{}}
+
+      iex> update_m_lito_001(m_lito_001, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_m_lito_001(%MLito_001{} = m_lito_001, attrs) do
+    m_lito_001
+    |> m_lito_001_changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a MLito_001.
+
+  ## Examples
+
+      iex> delete_m_lito_001(m_lito_001)
+      {:ok, %MLito_001{}}
+
+      iex> delete_m_lito_001(m_lito_001)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_m_lito_001(%MLito_001{} = m_lito_001) do
+    Repo.delete(m_lito_001)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking m_lito_001 changes.
+
+  ## Examples
+
+      iex> change_m_lito_001(m_lito_001)
+      %Ecto.Changeset{source: %MLito_001{}}
+
+  """
+  def change_m_lito_001(%MLito_001{} = m_lito_001) do
+    m_lito_001_changeset(m_lito_001, %{})
+  end
+
+  defp m_lito_001_changeset(%MLito_001{} = m_lito_001, attrs) do
+    m_lito_001
+    |> cast(attrs, [:liv_0, :liv_0_desc, :liv_1, :liv_1_desc, :red, :green, :blue])
+    |> validate_required([:liv_0, :liv_0_desc, :liv_1, :liv_1_desc, :red, :green, :blue])
+  end
 end

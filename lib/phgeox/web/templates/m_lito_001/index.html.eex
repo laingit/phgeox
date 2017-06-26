@@ -1,0 +1,38 @@
+<h2>Listing Mlito 001</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Liv 0</th>
+      <th>Liv 0 desc</th>
+      <th>Liv 1</th>
+      <th>Liv 1 desc</th>
+      <th>Red</th>
+      <th>Green</th>
+      <th>Blue</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for m_lito_001 <- @mlito_001 do %>
+    <tr>
+      <td><%= m_lito_001.liv_0 %></td>
+      <td><%= m_lito_001.liv_0_desc %></td>
+      <td><%= m_lito_001.liv_1 %></td>
+      <td><%= m_lito_001.liv_1_desc %></td>
+      <td><%= m_lito_001.red %></td>
+      <td><%= m_lito_001.green %></td>
+      <td><%= m_lito_001.blue %></td>
+
+      <td class="text-right">
+        <span><%= link "Show", to: m_lito_001_path(@conn, :show, m_lito_001), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: m_lito_001_path(@conn, :edit, m_lito_001), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: m_lito_001_path(@conn, :delete, m_lito_001), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New M lito 001", to: m_lito_001_path(@conn, :new) %></span>
