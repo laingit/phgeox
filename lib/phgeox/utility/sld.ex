@@ -2,7 +2,7 @@ defmodule Phgeox.Sld do
   
   def write(stringa) do
     
-    nome = "/db-alai-dev/prova1.sld"
+    nome = "/db-alai-dev/Litologica2017_liv1_v001.sld"
     IO.puts "writing:" <> nome
 
     {:ok, file} = File.open nome, [:write]
@@ -60,18 +60,26 @@ defmodule Phgeox.Sld do
     """
   end
 
-  def mappa_litologia_valori_input_sld(m) do 
-     %{name: m.liv_2, title: m.liv_2 <> " - " <> m.liv_2_desc, propertyName: "LIV_2",
-           valore: m.liv_2, rgb: Phgeox.Utility.Colori.rgb_to_hex(m)}
-
+  def mappa_litologia_liv_1(m) do 
+     %{name: m.liv_1, title: m.liv_1 <> " - " <> m.liv_1_desc, propertyName: "LIV_1",
+           valore: m.liv_1, rgb: Phgeox.Utility.Colori.rgb_to_hex(m)}
   end
 
-  def run(litologia) when is_list(litologia) do
-    lista = litologia |> Enum.map(&mappa_litologia_valori_input_sld/1)
-    
-    # r = componi %{name: "My Name A.1", title: "My title A.1", propertyName: "LIV_2", valore: "A.1", rgb: "#ff0000"}
-   
+  def mappa_litologia_liv_2(m) do 
+     %{name: m.liv_2, title: m.liv_2 <> " - " <> m.liv_2_desc, propertyName: "LIV_2",
+           valore: m.liv_2, rgb: Phgeox.Utility.Colori.rgb_to_hex(m)}
+  end
 
+  def run_liv_1(litologia) when is_list(litologia) do
+    lista = litologia |> Enum.map(&mappa_litologia_liv_1/1)
+    write start() <> List.foldl(lista, "", fn (v, acc) -> acc <> componi(v) end) <> fine()
+  end
+
+
+  # r = componi %{name: "My Name A.1", title: "My title A.1", propertyName: "LIV_2", valore: "A.1", rgb: "#ff0000"}
+  def run_liv_2(litologia) when is_list(litologia) do
+    lista = litologia |> Enum.map(&mappa_litologia_liv_2/1)
+    
     write start() <> List.foldl(lista, "", fn (v, acc) -> acc <> componi(v) end) <> fine()
   end
 
