@@ -24,7 +24,9 @@ defmodule Phgeox.Web.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Phgeox.Web do
-  #   pipe_through :api
-  # end
+  scope "/api", Phgeox.Web do
+     pipe_through :api
+
+     resources "/liv_due", Liv_dueController, only: [:index]
+  end
 end
