@@ -38,6 +38,8 @@ defmodule Phgeox.Web.Endpoint do
     key: "_phgeox_key",
     signing_salt: "9K3bMYVQ"
 
+  plug Corsica, origins: "*" , allow_headers: ~w(Content-Type)
+
   plug Phgeox.Web.Router
 
   @doc """

@@ -28,5 +28,6 @@ defmodule Phgeox.Web.Router do
      pipe_through :api
 
      resources "/liv_due", Liv_dueController, only: [:index]
+     resources "/liv_due_mappa", Liv_due_mappaController, only: [:index]
   end
 end

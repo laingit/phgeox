@@ -209,4 +209,48 @@ defmodule Phgeox.Legende do
     |> cast(attrs, [:liv_0, :liv_0_desc, :liv_1, :liv_1_desc, :red, :green, :blue])
     |> validate_required([:liv_0, :liv_0_desc, :liv_1, :liv_1_desc, :red, :green, :blue])
   end
+
+  
+
+  defp from_ss_atom_integer({k,v}, acc) do
+     Map.put  acc, String.to_atom(k), String.to_integer(v)
+  end
+
+  def trasforma_in_atom_integer(map) do
+    map
+    |> Map.to_list
+    |> Enum.reduce(%{}, &from_ss_atom_integer/2)
+  end
+
+  @xMin 1_400_000
+  @xMax 1_600_000
+  @yMin 4_200_000
+  @yMax 4_600_000
+
+  @doc """
+  Relativo alla richiesta delle formazioni del livello due MAPPA
+  
+  """
+
+  def get_default_bound_if_not_present(map_string_string)do
+    params = trasforma_in_atom_integer(map_string_string)
+    xMin = Map.get(params, :xMin , @xMin)
+    xMax = Map.get(params, :xMax , @xMax)
+    yMin = Map.get(params, :yMin , @yMin)
+    yMax = Map.get(params, :yMax , @yMax)
+
+    %{xMin: xMin,xMax: xMax, yMin: yMin, yMax: yMax}
+  end
+
+  def list_liv_due_mappa(%{xMin: xMin, xMax: xMax, yMin: yMin, yMax: yMax}) do
+    {:ok, risposta} = Ecto.Adapters.SQL.query(Phgeox.Repo, "SELECT
+        distinct litologia_due_v001_bassarid.liv_2
+      FROM
+        public.litologia_due_v001_bassarid
+      WHERE litologia_due_v001_bassarid.geom &&
+      	ST_MakeEnvelope ($1,$2,$3,$4 )
+        order by litologia_due_v001_bassarid.liv_2;", [xMin,yMin,xMax,yMax])
+    List.flatten risposta.rows
+  end
+
 end
