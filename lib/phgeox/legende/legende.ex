@@ -253,4 +253,52 @@ defmodule Phgeox.Legende do
     List.flatten risposta.rows
   end
 
+  ### Per Gerarchia Litologia - INIZIO
+
+  def getLIV_0 do
+    query = from lg in "legende_lito_001",
+      distinct: lg.liv_0,
+      order_by: lg.liv_0,
+      select: %{id: lg.liv_0, liv0Desc: lg.liv_0_desc, dentro: "root"}
+
+    Repo.all(query)
+  end
+
+  def getLIV_1 do
+    query = from lg in "legende_lito_001",
+      distinct: lg.liv_1,
+      order_by: lg.liv_1,
+      select: %{id: lg.liv_1, liv1Desc: lg.liv_1_desc, dentro: lg.liv_0}
+
+    Repo.all(query)
+  end
+
+  defp trasformaGetLIV2(%{id: id, liv2Desc: liv2Desc, dentro: dentro, rgb: rgb}) do
+    %{id: id, liv2Desc: liv2Desc, dentro: dentro, rgb: Phgeox.Utility.Colori.rgb_to_hex(rgb)}
+  end
+
+  def getLIV_2 do
+    query = from lg in "legende_lito_001",
+      distinct: lg.liv_2,
+      order_by: lg.liv_2,
+      select: %{id: lg.liv_2, liv2Desc: lg.liv_2_desc, dentro: lg.liv_1, rgb: %{red: lg.red, green: lg.green, blue: lg.blue}}
+
+    result = Repo.all(query)
+    Enum.map(result, &trasformaGetLIV2/1)
+  end
+
+  def listaToObjctKey(lista) do
+    lista
+  end
+
+  def trasfoLivello2Gerachia do
+    liv0 = getLIV_0
+    liv1 = getLIV_1
+    liv2 = getLIV_2
+    %{liv0: listaToObjctKey(liv0), liv1: listaToObjctKey(liv1),liv2: listaToObjctKey(liv2)}
+  end
+
+  
+
 end
+

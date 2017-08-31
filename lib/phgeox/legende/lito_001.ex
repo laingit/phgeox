@@ -11,6 +11,6 @@ defmodule Phgeox.Legende.Lito_001 do
     field :liv_2, :string
     field :liv_2_desc, :string
     field :red, :integer
-
   end
+  
 end

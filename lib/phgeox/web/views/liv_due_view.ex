@@ -5,6 +5,10 @@ defmodule Phgeox.Web.Liv_dueView do
     %{data: render_many(liv_due, Phgeox.Web.Liv_dueView, "liv_due.json")}
   end
  
+  def render("gerachia.json", %{liv_due: gerarchia}) do
+    %{data: gerarchia}
+  end
+
   def render("liv_due.json", %{liv_due: liv_due}) do
     %{liv_2: liv_due.liv_2,
       liv_2_desc: liv_due.liv_2_desc,
