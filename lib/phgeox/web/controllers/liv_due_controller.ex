@@ -8,9 +8,9 @@ defmodule Phgeox.Web.Liv_dueController do
     render(conn, "index.json", liv_due: liv_due)
   end
 
-  def show(conn, _params) do
-    gerarchia = Legende.trasfoLivello2Gerachia
-    render(conn, "gerarchia.json", liv_due: gerarchia)
+  def gerarchia(conn, _params) do
+    liv_due = Legende.trasfoLivello2Gerachia
+    render(conn, "gerarchia.json", liv_due: liv_due)
   end
   
 end

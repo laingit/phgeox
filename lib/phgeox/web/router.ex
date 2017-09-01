@@ -27,7 +27,8 @@ defmodule Phgeox.Web.Router do
   scope "/api", Phgeox.Web do
      pipe_through :api
 
-     resources "/liv_due", Liv_dueController, only: [:index, :show]
+     resources "/liv_due", Liv_dueController, only: [:index]
+     get "/liv_due_gerarchia", Liv_dueController, :gerarchia
      resources "/liv_due_mappa", Liv_due_mappaController, only: [:index]
   end
 end
